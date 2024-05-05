@@ -1,0 +1,35 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/index",
+			"style": {
+				// "navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		},
+		{
+			"path": "pages/movieOrder/movieOrder",
+			"style": {
+				// "navigationBarTitleText": "支付订单",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/seatSelection/seatSelection",
+			"style": {
+				// "navigationBarTitleText" : "",
+				"enablePullDownRefresh": false
+			}
+		}
+
+
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		// "navigationBarTitleText": "在线选座",
+		"navigationStyle": "custom",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	}
+}
