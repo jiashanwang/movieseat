@@ -145,19 +145,6 @@
 	</view>
 </template>
 <script>
-	/*
-	 *特别声明：
-	 * 该页面的逻辑及思路来自作者[houzisbw](https://github.com/houzisbw)的vue选座项目github地址[点击](https://github.com/houzisbw/MeiTuanCinemaSmartChoose)。
-	 * 本人只针对uni-app做了样式及逻辑适配。
-	 * 感谢原作者[houzisbw](https://github.com/houzisbw), 如有侵权, 请举报
-	 * 
-	 */
-
-	// import {
-	// 	seatData
-	// } from '@/utils/seat-data.js'
-	// 引入外部JS文件
-	// import '../../utils/jweixin.js';	
 	export default {
 		// 页面配置
 		  navigationBarTitleText: '自定义导航栏',
@@ -205,6 +192,7 @@
 				openid:"",// 用户openid;
 				cinemaId:"",// 电影院ID
 				movieId:"",// 电影ID
+				detailImg:"",// 电影海报
 			};
 		},
 		computed: {
@@ -227,6 +215,7 @@
 			this.openid = options.openid;
 			this.cinemaId = options.cinemaId;
 			this.movieId = options.movieId;
+			this.detailImg = options.detailImg;
 			
 			// this.cinemaSchedules_id = "48771A4540EA6AF9685112173F8EBAB5"
 			// this.path = options.path;
@@ -665,6 +654,7 @@
 				data.cinemaId = this.cinemaId;
 				data.movieId = this.movieId;
 				data.movieSchedulingId = this.cinemaSchedules_id;
+				data.detailImg = this.detailImg;
 				//非会员价格
 				// data.practicalPrice = this.spunYuan(practicalPrice);
 				// //会员价
