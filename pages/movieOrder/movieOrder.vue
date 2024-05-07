@@ -178,7 +178,7 @@
 							let uoid = result.data.uoid;
 							let outtradeno = result.data.outtradeno;
 							let baseUrl = "https://www.chishunpay.com/html/lekah5?outtradeno=" + outtradeno +
-								"&path=paymentCompleted";
+								"&path=cinemaDetail";
 							let backurl = Base64.encode(baseUrl);
 							let url = "https://mpay.ltsw.cn/payment/#/?uoid=" + uoid + "&backurl=" + backurl;
 							window.location.href = url;
