@@ -76,6 +76,8 @@
 				movieId:"",// 电影ID
 				movieSchedulingId:"",// 电影排期ID
 				detailImg:"",// 电影海报
+				purchasePrice:0,//
+				integralPrice:0,//
 			}
 		},
 		onLoad: function(option) {
@@ -92,6 +94,8 @@
 				this.seatList = seatList;
 				this.openid = queryData.openid;
 				this.detailImg = queryData.detailImg;
+				// this.integralPrice = queryData.integralPrice;
+				// this.purchasePrice = queryData.purchasePrice;
 				if (seatList.indexOf(",") == -1) {
 					this.seatNum = 1;
 				} else {
@@ -144,7 +148,7 @@
 					serviceCharge: 0, // 服务费
 					remark: "",
 					pid: 39,
-					specsId: 1, // 无用，占位符
+					specsId: 144, // 无用，占位符 在product_specs 中定义的
 					productType: 11, // 产品分类表
 					extendData: {
 						memberPhone:this.phone.trim(),// 手机号码
@@ -153,6 +157,8 @@
 						movieSchedulingId:this.movieSchedulingId,// 电影排期ID
 						seatId:this.seatId,// 座位IDS,座位ID逗号隔开
 						detail_img:this.detailImg,// 商品图标
+						integralPrice:52,// 
+						purchasePrice:50,// 
 					}, //扩展数据
 					payModel: 1, // 支付方式 仅支持积分支付
 					// integralAmount: parseFloat(this.seatTotalPrice), // 积分支付金额
@@ -178,7 +184,7 @@
 							let uoid = result.data.uoid;
 							let outtradeno = result.data.outtradeno;
 							let baseUrl = "https://www.chishunpay.com/html/lekah5?outtradeno=" + outtradeno +
-								"&path=cinemaDetail";
+								"&path=paymentCompleted";
 							let backurl = Base64.encode(baseUrl);
 							let url = "https://mpay.ltsw.cn/payment/#/?uoid=" + uoid + "&backurl=" + backurl;
 							window.location.href = url;

@@ -587,7 +587,6 @@
 			noMultipleClicks(methods, info) {
 				// methods是点击后需要执行的函数， info是函数需要传的参数
 				let that = this;
-
 				if (that.optArr.length <= 0) {
 					uni.showToast({
 						title: '请选择座位',
@@ -627,7 +626,6 @@
 				let price = 0.0;
 				let practicalPrice = 0.0;
 				let discountPrice = 0.0;
-
 				that.optArr.forEach(item => {
 					seatId += item.SeatCode + ","
 					// let numName = item.RowNum + '排' + item.ColumnNum + '座';
@@ -656,9 +654,9 @@
 				data.movieSchedulingId = this.cinemaSchedules_id;
 				data.detailImg = this.detailImg;
 				//非会员价格
-				// data.practicalPrice = this.spunYuan(practicalPrice);
+				// data.integralPrice = this.spunYuan(practicalPrice);
 				// //会员价
-				// data.discountPrice = this.spunYuan(discountPrice);
+				// data.purchasePrice = this.spunYuan(discountPrice);
 				uni.navigateTo({
 				    url:`/pages/movieOrder/movieOrder?data=`+ encodeURIComponent(JSON.stringify(data))
 				})

@@ -212,7 +212,6 @@
 			uni.showLoading({
 				title: "加载中..."
 			})
-			debugger;
 			this.cinemaSchedules_id = options.id
 			this.show_name = options.show_name
 			this.show_version = options.show_version
@@ -351,7 +350,6 @@
 						uni.hideLoading();
 						let res = resp.data;
 						if (res.code == 200) {
-							debugger;
 							// let resData = result.data;
 							// console.log(res.data.cinemaSchedulesList)
 							// let arrList = res.data.cinemaSchedulesList[0].cinemaSeatList;
