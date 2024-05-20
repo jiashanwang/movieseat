@@ -324,8 +324,6 @@
 								}
 								this.priceGrouping.push(obj);
 							}
-							console.log('priceGrouping==')
-							console.log(this.priceGrouping)
 							let list = [];
 							for (let i = 0; i < arrList.length; i++) {
 								let pobj = arrList[i];
@@ -345,7 +343,6 @@
 									'price': pobj.totalPrice,
 									'name': pobj.name,
 								};
-								// console.log(obj);
 								list.push(obj);
 							}
 							//情侣座
@@ -393,7 +390,6 @@
 
 			initData: function() {
 				// let arr = seatData
-				console.log(arr)
 				//假数据说明：SeatCode座位编号，RowNum-行号，ColumnNum-纵号，YCoord-Y坐标，XCoord-X坐标，Status-状态
 				let row = 0
 				let col = 0
@@ -408,8 +404,6 @@
 				// this.seatList = arr
 
 				this.seatRow = row - minRow + 1
-				console.log(this.seatRow)
-				console.log(row)
 				this.seatCol = col - minCol + 3
 				this.minRow = minRow
 				this.minCol = minCol - 1
@@ -429,7 +423,6 @@
 			//初始座位数组
 			initSeatArray: function() {
 				// const newArr = this.groupBy(this.meList, 'RowNum');
-				// console.log(newArr);
 				// 0 [] 1 [] 2 []
 				let seatArray = Array(this.seatRow).fill(0).map(() => Array(this.seatCol).fill({
 					type: -1,

@@ -20,9 +20,10 @@
 			</view>
 		</view>
 		<view class="orderInfo">
-			<view class="name">短信通知<text class="notify">出票成功后系统自动发送通知短信</text></view>
+			<!-- <view class="name">短信通知<text class="notify">出票成功后系统自动发送通知短信</text></view> -->
+			<view class="name">影院必填</view>
 			<view class="itemWrapPhone">
-				<view class="leftPartPhone">手机号码：</view>
+				<view class="leftPartPhone"><text class="mustval">*</text>手机号码：</view>
 				<view class="rightPartPhone">
 					<input type="text" v-model="phone" placeholder="请输入手机号码" @input="checkPhone" confirm-type="next"
 						class="phone-input" />
@@ -72,12 +73,12 @@
 				phone: '',
 				phoneError: false,
 				phoneErrorMsg: '',
-				cinemaId:"",// 电影院ID
-				movieId:"",// 电影ID
-				movieSchedulingId:"",// 电影排期ID
-				detailImg:"",// 电影海报
-				purchasePrice:0,//
-				integralPrice:0,//
+				cinemaId: "", // 电影院ID
+				movieId: "", // 电影ID
+				movieSchedulingId: "", // 电影排期ID
+				detailImg: "", // 电影海报
+				purchasePrice: 0, //
+				integralPrice: 0, //
 			}
 		},
 		onLoad: function(option) {
@@ -125,23 +126,23 @@
 			},
 			// 立即兑换
 			exchange() {
-				if (!this.phone.trim()){
+				if (!this.phone.trim()) {
 					uni.showToast({
 						title: "手机号码不能为空!",
 						icon: 'none'
 					});
-					return ;
-				}else if (this.phoneError){
+					return;
+				} else if (this.phoneError) {
 					uni.showToast({
 						title: "请输入正确的手机号码!",
 						icon: 'none'
 					});
-					return ;
+					return;
 				};
 				let that = this;
 				let params = {
 					openid: this.openid,
-					productName: "电影票",
+					productName: this.movieName,
 					buyNo: 1,
 					// integralPrice: parseFloat(this.seatTotalPrice), // 总支付金额
 					integralPrice: 1, // 假数据
@@ -151,14 +152,14 @@
 					specsId: 144, // 无用，占位符 在product_specs 中定义的
 					productType: 11, // 产品分类表
 					extendData: {
-						memberPhone:this.phone.trim(),// 手机号码
-						movieCinemaId:this.cinemaId,// 电影院ID
-						movieFilmId:this.movieId,// 电影ID
-						movieSchedulingId:this.movieSchedulingId,// 电影排期ID
-						seatId:this.seatId,// 座位IDS,座位ID逗号隔开
-						detail_img:this.detailImg,// 商品图标
-						integralPrice:52,// 
-						purchasePrice:50,// 
+						memberPhone: this.phone.trim(), // 手机号码
+						movieCinemaId: this.cinemaId, // 电影院ID
+						movieFilmId: this.movieId, // 电影ID
+						movieSchedulingId: this.movieSchedulingId, // 电影排期ID
+						seatId: this.seatId, // 座位IDS,座位ID逗号隔开
+						detail_img: this.detailImg, // 商品图标
+						integralPrice: 52, // 
+						purchasePrice: 50, // 
 					}, //扩展数据
 					payModel: 1, // 支付方式 仅支持积分支付
 					// integralAmount: parseFloat(this.seatTotalPrice), // 积分支付金额
@@ -318,7 +319,7 @@
 	.error-text {
 		color: red;
 		margin-top: 5px;
-		font-size:24rpx;
+		font-size: 24rpx;
 	}
 
 	.rightPartPhone {
@@ -329,24 +330,34 @@
 		flex-grow: 1;
 		text-align: left;
 	}
-	.rightPartPhone input{
-		height:60rpx;
+
+	.rightPartPhone input {
+		height: 60rpx;
 		line-height: 60rpx;
-		padding-left:20rpx;
-		color:#cccccc;
-		font-size:24rpx;
+		padding-left: 20rpx;
+		color: #cccccc;
+		font-size: 24rpx;
 	}
 
 	.leftPartPhone {
-		width: 160rpx;
+		width: 174rpx;
 		text-align: left;
 		line-height: 60rpx;
 		height: 60rpx;
 	}
-	.notify{
-		color:#eb8013;
-		font-size:20rpx;
+
+	.notify {
+		color: #eb8013;
+		font-size: 20rpx;
 		font-weight: normal;
-		padding-left:20rpx;
+		padding-left: 20rpx;
+	}
+
+	.mustval {
+		color: #ff0000;
+	}
+
+	.phone-input {
+		color: #000000 !important;
 	}
 </style>
