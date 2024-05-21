@@ -338,8 +338,8 @@
 									"RowNum": pobj.row,
 									"ColumnNum": pobj.column,
 									"type": -1,
-									'practicalPriceXt': pobj.practicalPriceXt,
-									'discountPriceXt': pobj.discountPriceXt,
+									'practicalPriceXt': pobj.totalPrice, // 原件
+									'discountPriceXt': pobj.price, // 折扣价格
 									'price': pobj.totalPrice,
 									'name': pobj.name,
 								};
@@ -471,8 +471,6 @@
 						icon: seat[num].icon,
 						"name": seat[num].name
 					}
-					console.log("arr==")
-					console.log(arr)
 				}
 				this.seatArray = arr.slice();
 
@@ -510,7 +508,6 @@
 			},
 			//移动事件
 			onMove: function(e) {
-				// console.log(e)
 				this.showTis = false
 				this.moveX = e.detail.x
 			},
@@ -624,9 +621,9 @@
 					// let numName = item.RowNum + '排' + item.ColumnNum + '座';
 					let numName = item.name;
 					bayNumber += numName + ","
-					price += parseFloat(item.price);
-					// practicalPrice += parseFloat(item.practicalPriceXt);
-					// discountPrice += parseFloat(item.discountPriceXt);
+					price += parseFloat(item.price); // 原价
+					practicalPrice += parseFloat(item.practicalPriceXt); // 原价
+					discountPrice += parseFloat(item.discountPriceXt);// 折扣价
 				})
 				//座位IDS
 				seatId = seatId.substring(0, seatId.lastIndexOf(','));
@@ -646,10 +643,8 @@
 				data.movieId = this.movieId;
 				data.movieSchedulingId = this.cinemaSchedules_id;
 				data.detailImg = this.detailImg;
-				//非会员价格
-				// data.integralPrice = this.spunYuan(practicalPrice);
-				// //会员价
-				// data.purchasePrice = this.spunYuan(discountPrice);
+				data.integralPrice = this.spunYuan(practicalPrice);//原价
+				data.purchasePrice = this.spunYuan(discountPrice);// 折扣价
 				uni.navigateTo({
 				    url:`/pages/movieOrder/movieOrder?data=`+ encodeURIComponent(JSON.stringify(data))
 				})

@@ -77,8 +77,8 @@
 				movieId: "", // 电影ID
 				movieSchedulingId: "", // 电影排期ID
 				detailImg: "", // 电影海报
-				purchasePrice: 0, //
-				integralPrice: 0, //
+				purchasePrice: 0, //折扣价
+				integralPrice: 0, // 原价
 			}
 		},
 		onLoad: function(option) {
@@ -95,8 +95,8 @@
 				this.seatList = seatList;
 				this.openid = queryData.openid;
 				this.detailImg = queryData.detailImg;
-				// this.integralPrice = queryData.integralPrice;
-				// this.purchasePrice = queryData.purchasePrice;
+				this.integralPrice = queryData.integralPrice; // 原价
+				this.purchasePrice = queryData.purchasePrice; // 折扣价
 				if (seatList.indexOf(",") == -1) {
 					this.seatNum = 1;
 				} else {
@@ -144,8 +144,7 @@
 					openid: this.openid,
 					productName: this.movieName,
 					buyNo: 1,
-					// integralPrice: parseFloat(this.seatTotalPrice), // 总支付金额
-					integralPrice: 1, // 假数据
+					integralPrice: parseFloat(this.seatTotalPrice), // 总支付金额
 					serviceCharge: 0, // 服务费
 					remark: "",
 					pid: 39,
@@ -158,12 +157,11 @@
 						movieSchedulingId: this.movieSchedulingId, // 电影排期ID
 						seatId: this.seatId, // 座位IDS,座位ID逗号隔开
 						detail_img: this.detailImg, // 商品图标
-						integralPrice: 52, // 
-						purchasePrice: 50, // 
+						integralPrice: parseFloat(this.integralPrice), // 
+						purchasePrice: parseFloat(this.purchasePrice), // 
 					}, //扩展数据
 					payModel: 1, // 支付方式 仅支持积分支付
-					// integralAmount: parseFloat(this.seatTotalPrice), // 积分支付金额
-					integralAmount: 1, // 积分支付金额  假数据
+					integralAmount: parseFloat(this.seatTotalPrice), // 积分支付金额
 					wxAmount: 0, // 微信支付金额
 					cardDealerHasCharge: 1, // 卡商是否收取服务费 1收取，0 不收取
 					cardDealerServiceCharge: 0.05, // 卡商收取服务费的点数
